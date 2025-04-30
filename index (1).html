@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ragni Madam Ji ❤️‍🩹 Mere Liye</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Arial+Rounded+MT+Bold&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial Rounded MT Bold', sans-serif;
+      background: url('soft-focus-couple.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #ff69b4;
+    }
+
+    /* Loader */
+    .loader {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      font-size: 1.5rem;
+    }
+
+    .heart-loader {
+      font-size: 4rem;
+      animation: heartbeat 1s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 10px;
+      background: #ff69b4;
+      margin-top: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar div {
+      height: 100%;
+      background: #d81b60;
+      animation: progress 3s linear forwards;
+    }
+
+    @keyframes progress {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Floating Hearts */
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 70%, 18% 100%, 0% 35%);
+      animation: float 5s infinite, fade 5s infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.8); }
+      to { transform: translateY(-10vh) scale(1.2); }
+    }
+
+    @keyframes fade {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* Shayari */
+    .shayari {
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      margin: 20px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .contact-form input, .contact-form select, .contact-form button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background: #d81b60;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Easter Egg */
+    .hidden-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff69b4;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 600px) {
+      .shayari {
+        font-size: 1.5rem;
+      }
+
+      .contact-form {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="heart-loader">💗</div>
+    <p>Ragni Madam Ji... Aapke liye kuch khaas taiyaar kar raha hoon 💘</p>
+    <div class="progress-bar"><div></div></div>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="hearts"></div>
+
+  <!-- Shayari -->
+  <div class="shayari">
+    <p id="typing-text"></p>
+  </div>
+
+  <!-- Contact Form -->
+  <form class="contact-form">
+    <input type="text" value="Ragni Madam Ji ka Chahne Wala" readonly>
+    <select>
+      <option>I miss you</option>
+      <option>You're special</option>
+      <option>Let's talk?</option>
+    </select>
+    <button type="button" onclick="showSubmissionMessage()">Aapka intezaar rahega... 💌</button>
+  </form>
+
+  <div class="hidden-message" id="hidden-message">
+    Ragni Madam Ji, aapka reply mere din ki sabse khoobsurat ghadi hogi! 💖
+  </div>
+
+  <script>
+    // Loader Timeout
+    setTimeout(() => document.querySelector('.loader').style.display = 'none', 3000);
+
+    // Floating Hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.width = heart.style.height = Math.random() * 30 + 10 + 'px';
+      document.querySelector('.hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 200);
+
+    // Typewriter Effect
+    const shayari = [
+      "Ragni Madam Ji, agar aapke paas ek pal bhi ho,",
+      "Toh bhi mujhe bas aap hi chahiye...",
+      "Aapke bina har lamha adhura lagta hai,",
+      "Aap mere dil ki raani ho ❤️‍🩹"
+    ];
+
+    let line = 0, char = 0;
+    const typingSpeed = 90, linePause = 1200;
+    const typingText = document.getElementById('typing-text');
+
+    function type() {
+      if (char < shayari[line].length) {
+        typingText.textContent += shayari[line][char++];
+        setTimeout(type, typingSpeed);
+      } else {
+        char = 0; line++;
+        if (line < shayari.length) setTimeout(() => { typingText.textContent = ''; type(); }, linePause);
+      }
+    }
+    type();
+
+    // Form Submission
+    function showSubmissionMessage() {
+      document.getElementById('hidden-message').style.display = 'block';
+    }
+
+    // Easter Egg
+    document.addEventListener('dblclick', () => alert("Aap mere liye khaas ho... 🤗"));
+  </script>
+</body>
+</html>
